@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="task">
+            <h2><span>Task</span> {{task.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>Task Text</span></dt>
+                <dd>
+                    <span>{{task.taskText}}</span>
+                </dd>
+                <dt><span>Assign Date</span></dt>
+                <dd>
+                    <span>{{task.assignDate}}</span>
+                </dd>
+                <dt><span>Due Date</span></dt>
+                <dd>
+                    <span>{{task.dueDate}}</span>
+                </dd>
+                <dt><span>Employee</span></dt>
+                <dd>
+                    <div *ngIf="task.employee">
+                        <a [routerLink]="['/employee', task.employee?.id, 'view']">{{task.employee?.id}}</a>
+                    </div>
+                </dd>
+                <dt><span>Creator</span></dt>
+                <dd>
+                    <div *ngIf="task.creator">
+                        <a [routerLink]="['/employee', task.creator?.id, 'view']">{{task.creator?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/task', task.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

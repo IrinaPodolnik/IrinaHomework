@@ -1,0 +1,47 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="manager">
+            <h2><span>Manager</span> {{manager.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span>First Name</span></dt>
+                <dd>
+                    <span>{{manager.firstName}}</span>
+                </dd>
+                <dt><span>Last Name</span></dt>
+                <dd>
+                    <span>{{manager.lastName}}</span>
+                </dd>
+                <dt><span>Position</span></dt>
+                <dd>
+                    <span>{{manager.position}}</span>
+                </dd>
+                <dt><span>Position</span></dt>
+                <dd>
+                    <span>{{manager.position}}</span>
+                </dd>
+                <dt><span>Subordinates</span></dt>
+                <dd>
+                    <span>{{manager.subordinates}}</span>
+                </dd>
+                <dt><span>SubordinatersReports</span></dt>
+                <dd>
+                    <span>{{manager.subordinatersReports}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/manager', employee.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

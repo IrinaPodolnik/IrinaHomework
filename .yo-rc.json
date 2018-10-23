@@ -1,0 +1,31 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "com.irina.homework"
+    },
+    "jhipsterVersion": "5.4.2",
+    "applicationType": "monolith",
+    "baseName": "irinaHomework",
+    "packageName": "com.irina.homework",
+    "packageFolder": "com/irina/homework",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "no",
+    "websocket": false,
+    "databaseType": "sql",
+    "devDatabaseType": "h2Memory",
+    "prodDatabaseType": "mysql",
+    "searchEngine": false,
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "ZGU5ZWExNGQ3NDgwODVlYWFhZGUyN2M1MGI5ZGVkNGZmYWFkZDcwNWJkYzQxMGUzMTBkYjE3MmM0ZjYwYjk1Yzk3YjM0Mjc1MmQzMjE4YTQ3NWVmZTMwYzUyNjVjOGIwMWExM2NhMDA4MWIxODMxNDk4MTlhMjUxZDQxY2M5NzY=",
+    "clientFramework": "angularX",
+    "useSass": false,
+    "clientPackageManager": "npm",
+    "testFrameworks": [],
+    "jhiPrefix": "jhi",
+    "enableTranslation": false
+  }
+}

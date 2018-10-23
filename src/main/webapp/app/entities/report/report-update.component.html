@@ -1,0 +1,53 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+            <h2 id="jhi-report-heading">Create or edit a Report</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!report.id">
+                    <label for="id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id"
+                        [(ngModel)]="report.id" readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_reportText">Report Text</label>
+                    <input type="text" class="form-control" name="reportText" id="field_reportText"
+                        [(ngModel)]="report.reportText" />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_reportDate">Report Date</label>
+                    <div class="input-group">
+                        <input id="field_reportDate" type="text" class="form-control" name="reportDate" ngbDatepicker  #reportDateDp="ngbDatepicker" [(ngModel)]="report.reportDate"
+                        />
+                        <span class="input-group-append">
+                            <button type="button" class="btn btn-secondary" (click)="reportDateDp.toggle()"><fa-icon [icon]="'calendar-alt'"></fa-icon></button>
+                        </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" for="field_employee">Employee</label>
+                        <select class="form-control" id="field_employee" name="employee" [(ngModel)]="report.employee" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="employeeOption.id === report.employee?.id ? report.employee : employeeOption" *ngFor="let employeeOption of employees; trackBy: trackEmployeeById">{{employeeOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" for="field_reportFrom">Report From</label>
+                    <select class="form-control" id="field_reportFrom" name="reportFrom" [(ngModel)]="report.reportFrom" >
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="employeeOption.id === report.reportFrom?.id ? report.reportFrom : employeeOption" *ngFor="let employeeOption of employees; trackBy: trackEmployeeById">{{employeeOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span>Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span>Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

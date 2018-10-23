@@ -1,0 +1,70 @@
+<div>
+    <h2 id="page-heading">
+        <span>Tasks</span>
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-task" [routerLink]="['/task/new']">
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span >
+            Create new Task
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <br/>
+    <div class="table-responsive" *ngIf="tasks">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span>ID</span></th>
+            <th><span>Task Text</span></th>
+            <th><span>Assign Date</span></th>
+            <th><span>Due Date</span></th>
+            <th><span>Employee</span></th>
+            <th><span>Creator</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let task of tasks ;trackBy: trackId">
+                <td><a [routerLink]="['/task', task.id, 'view' ]">{{task.id}}</a></td>
+                <td>{{task.taskText}}</td>
+                <td>{{task.assignDate | date:'mediumDate'}}</td>
+                <td>{{task.dueDate | date:'mediumDate'}}</td>
+                <td>
+                    <div *ngIf="task.employee">
+                        <a [routerLink]="['../employee', task.employee?.id, 'view' ]" >{{task.employee?.id}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="task.creator">
+                        <a [routerLink]="['../employee', task.creator?.id, 'view' ]" >{{task.creator?.id}}</a>
+                    </div>
+                </td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['/task', task.id, 'view' ]"
+                                class="btn btn-info btn-sm">
+                            <fa-icon [icon]="'eye'"></fa-icon>
+                            <span class="d-none d-md-inline">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/task', task.id, 'edit']"
+                                class="btn btn-primary btn-sm">
+                            <fa-icon [icon]="'pencil-alt'"></fa-icon>
+                            <span class="d-none d-md-inline">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'task/'+ task.id + '/delete'} }]"
+                                replaceUrl="true"
+                                queryParamsHandling="merge"
+                                class="btn btn-danger btn-sm">
+                            <fa-icon [icon]="'times'"></fa-icon>
+                            <span class="d-none d-md-inline">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
